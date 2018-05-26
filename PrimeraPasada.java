@@ -18,13 +18,24 @@ public class PrimeraPasada{
             BufferedReader ts = new BufferedReader(new FileReader(fileNameSplit[0]+"TS.txt"));
             String line;
             String l;
+            out:
             while(!((line = br.readLine()).equals("    END"))) {
+                // si no hay etiquetas manda -1
                 if(line.indexOf(":")!=-1){
                     String[] etiDef=line.split(":");
                     while((l=ts.readLine())!=null) {
                         String[] lSplit=l.split("\\|");
-                        if(lSplit[0].equals(etiDef))
+                        if(lSplit[0].equals(etiDef[0])){
                             System.out.println("Error");
+                            ts.close();  
+                            File archts = new File(fileNameSplit[0]+"TS.txt");
+                            File archcl = new File(fileNameSplit[0]+"CL.txt");
+                            File archcod = new File(fileNameSplit[0]+"COD.txt");                          
+                            archcl.delete();
+                            archts.delete();
+                            archcod.delete();
+                            break out;
+                        }                  
                         else{ 
                             Writer output = new BufferedWriter(new FileWriter(fileNameSplit[0]+"TS.txt", true));  
                             output.append(etiDef[0]+"\r\n");
