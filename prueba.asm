@@ -2,4 +2,6 @@
     PUSH DE
 ETI1: LD B
 ETI2: LD C
+ETI3: LD B
+ETI4: LD D
     END

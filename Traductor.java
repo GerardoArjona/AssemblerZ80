@@ -10,9 +10,9 @@ public class Traductor{
 
 
         CreadorTablas creadorTablas = new CreadorTablas();        
-        creadorTablas.creandoTablas(fileName, "TS","SIMBOLO \tVALOR \tDEFINICION" );
-        creadorTablas.creandoTablas(fileName, "CL","ISNTRUCCION \tCL" );
-        creadorTablas.creandoTablas(fileName, "COD","INSTRUCCION \tCODIGO" );
+        creadorTablas.creandoTablas(fileName, "TS","SIMBOLO|VALOR|DEFINICION" );
+        creadorTablas.creandoTablas(fileName, "CL","ISNTRUCCION|CL" );
+        creadorTablas.creandoTablas(fileName, "COD","INSTRUCCION|CODIGO" );
 
         PrimeraPasada p1 = new PrimeraPasada();        
         p1.pasadaUno(fileName);
