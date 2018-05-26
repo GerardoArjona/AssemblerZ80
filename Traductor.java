@@ -7,16 +7,19 @@ public class Traductor{
 
         System.out.println("Ingrese el nombre del archivo: ");
         String fileName=sc.nextLine();
+        File f=new File(fileName);
 
+        if(f.exists()){
+            CreadorTablas creadorTablas = new CreadorTablas();        
+            creadorTablas.creandoTablas(fileName, "TS","SIMBOLO|VALOR|DEFINICION" );
+            creadorTablas.creandoTablas(fileName, "CL","ISNTRUCCION|CL" );
+            creadorTablas.creandoTablas(fileName, "COD","INSTRUCCION|CODIGO" );
 
-        CreadorTablas creadorTablas = new CreadorTablas();        
-        creadorTablas.creandoTablas(fileName, "TS","SIMBOLO|VALOR|DEFINICION" );
-        creadorTablas.creandoTablas(fileName, "CL","ISNTRUCCION|CL" );
-        creadorTablas.creandoTablas(fileName, "COD","INSTRUCCION|CODIGO" );
-
-        PrimeraPasada p1 = new PrimeraPasada();        
-        p1.pasadaUno(fileName);
-
+            PrimeraPasada p1 = new PrimeraPasada();        
+            p1.pasadaUno(fileName);
+        }
+        else
+            System.out.println("\nEl archivo no existe");
 
 
 
