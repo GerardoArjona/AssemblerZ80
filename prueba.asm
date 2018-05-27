@@ -1,0 +1,7 @@
+    LD A
+    PUSH DE
+ETI1: LD B
+ETI2: LD C
+ETI3: PUSH DE
+ETI3: ADD Y
+    END
