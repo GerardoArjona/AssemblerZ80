@@ -20,17 +20,37 @@ public class PrimeraPasada{
             BufferedReader mnl = new BufferedReader(new FileReader("MnLong.txt"));
             String line;
             String l;
+<<<<<<< HEAD
             String mn;
+=======
+            out:
+>>>>>>> Tania
             while(!((line = br.readLine()).equals("    END"))) {
+                // si no hay etiquetas manda -1
                 if(line.indexOf(":")!=-1){
                     String[] etiDef=line.split(":");
                     while((l=ts.readLine())!=null) {
                         String[] lSplit=l.split("\\|");
+<<<<<<< HEAD
                         if(lSplit[0].equals(etiDef[0]))
                             System.out.println("Error");
                         else{
                             System.out.println(cl);
                             hexCL = Integer.toHexString(cl);
+=======
+                        if(lSplit[0].equals(etiDef[0])){
+                            System.out.println("Error");
+                            ts.close();  
+                            File archts = new File(fileNameSplit[0]+"TS.txt");
+                            File archcl = new File(fileNameSplit[0]+"CL.txt");
+                            File archcod = new File(fileNameSplit[0]+"COD.txt");                          
+                            archcl.delete();
+                            archts.delete();
+                            archcod.delete();
+                            break out;
+                        }                  
+                        else{ 
+>>>>>>> Tania
                             Writer output = new BufferedWriter(new FileWriter(fileNameSplit[0]+"TS.txt", true));  
                             output.append(etiDef[0]+"|"+hexCL+"|s\r\n");
                             output.close();
