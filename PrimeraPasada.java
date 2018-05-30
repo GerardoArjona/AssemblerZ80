@@ -9,6 +9,7 @@ import java.io.Writer;
 public class PrimeraPasada{
 
     int cl=0;
+    int lon;
     String hexCL;
 
     public void pasadaUno(String fileName){
@@ -25,8 +26,10 @@ public class PrimeraPasada{
             while(!((line = br.readLine()).equals("    END"))) {
                 if(line.indexOf(":")!=-1){
                     String[] etiDef=line.split(":");
+                    String eti=etiDef[0].replace(" ", "");
                     while((l=ts.readLine())!=null) {
                         String[] lSplit=l.split("\\|");
+                        System.out.println(etiDef[0]);
                         if(lSplit[0].equals(etiDef[0])){
                             System.out.println("Error");
                             ts.close();  
@@ -38,26 +41,35 @@ public class PrimeraPasada{
                             archcod.delete();
                             break out;
                         }else{
-                            System.out.println(cl);
                             hexCL = Integer.toHexString(cl);
                             Writer output = new BufferedWriter(new FileWriter(fileNameSplit[0]+"TS.txt", true));  
-                            output.append(etiDef[0]+"|"+hexCL+"|s\r\n");
+                            output.append(eti+"|"+hexCL+"|s\r\n");
                             output.close();
-                            String[] instruccion=etiDef[1].split(" ");
+                            String[] instruccion=etiDef[1].split(" ");                
                             while((mn=mnl.readLine())!=null){
-                                System.out.println(cl);
                                 String[] ins=mn.split("\\|");
                                 if (ins[0].equals(instruccion[1])){
-                                    int lon=Integer.parseInt(ins[1]);
-                                    cl=cl+lon;
-                                    //System.out.println(cl);
+                                    lon=Integer.parseInt(ins[1]);
+                                    break;
                                 }            
                             }
+                            cl=cl+lon;
                             break;
                         }
                     }
+                }else{
+                    String[] instruccion=line.split(" ");
+                    while((mn=mnl.readLine())!=null){
+                        String[] ins=mn.split("\\|");
+                        if (ins[0].equals(instruccion[4])){
+                            lon=Integer.parseInt(ins[1]);
+                            break;
+                        }            
+                    }
+                    cl=cl+lon;
                 }
             }
+            System.out.println(cl);
 		}catch(IOException exp){
 			System.out.println("Error: No se pudo abrir o crear el archivo");
 			exp.printStackTrace();
