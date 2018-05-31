@@ -1,7 +1,0 @@
-pruebaTS
-SIMBOLO|VALOR|DEFINICION
-X|0|s
-Y|1|s
-ETI1|3|s
-ETI2|5|s
-ETI3|7|s
