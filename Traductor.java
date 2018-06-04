@@ -10,6 +10,7 @@ public class Traductor{
         String fileName=sc.nextLine();
         String[] filesplit=fileName.split("\\.");
         File f=new File(fileName);
+        CalculadoraCL calc=new CalculadoraCL(); 
 
         if(f.exists() && filesplit[1].contains("asm")){
             CreadorTablas creadorTablas = new CreadorTablas();        

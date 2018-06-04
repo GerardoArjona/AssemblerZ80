@@ -17,10 +17,10 @@ public class PrimeraPasada{
     public void pasadaUno(String fileName){
         
         try {
+            CalculadoraCL longitudCl = new CalculadoraCL();
             String[] fileNameSplit=fileName.split("\\.");
             BufferedReader br = new BufferedReader(new FileReader(fileName));
             BufferedReader ts = new BufferedReader(new FileReader(fileNameSplit[0]+"TS.txt"));
-            BufferedReader mnl = new BufferedReader(new FileReader("MnLong.txt"));
             ArrayList<String> etis = new ArrayList<String>(); //todas las etiquetas que se encuentren en el archivo se guardan aquí
             String line;
             String l;
@@ -33,33 +33,33 @@ public class PrimeraPasada{
                     while((l=ts.readLine())!=null) {
                         String[] lSplit=l.split("\\|");
                         hexCL = Integer.toHexString(cl);
+                        //System.out.println(hexCL);
                         Writer output = new BufferedWriter(new FileWriter(fileNameSplit[0]+"TS.txt", true));
                         Writer outCl = new BufferedWriter(new FileWriter(fileNameSplit[0]+"CL.txt",true));  
                         output.append(eti+"|"+hexCL+"|s\r\n");
                         output.close();
                         outCl.append(etiDef[1]+"|"+hexCL+"\r\n");
                         outCl.close();
-                        String[] instruccion=etiDef[1].split(" ");                
-                        while((mn=mnl.readLine())!=null){
-                            String[] ins=mn.split("\\|");
-                            if (ins[0].equals(instruccion[1])){
-                                lon=Integer.parseInt(ins[1]);
-                                break;
-                            }            
+                        lon=longitudCl.calcularLongitud(etiDef[1], 1, 2);
+                        if(lon!=-1){               
+                            cl=cl+lon;
+                            break;
                         }
-                        cl=cl+lon;
+                        System.out.println("Error, no es posible calcular la longitud eti");
                         break;
                         }
                 }else{
-                    String[] instruccion=line.split(" ");
-                    while((mn=mnl.readLine())!=null){
-                        String[] ins=mn.split("\\|");
-                        if (ins[0].equals(instruccion[4])){
-                            lon=Integer.parseInt(ins[1]);
-                            break;
-                        }            
+                    System.out.println(line);
+                    hexCL = Integer.toHexString(cl);
+                    Writer outCl = new BufferedWriter(new FileWriter(fileNameSplit[0]+"CL.txt",true));
+                    outCl.append(line+"|"+hexCL+"\r\n");
+                    outCl.close();
+                    lon=longitudCl.calcularLongitud(line, 4, 5);
+                    if(lon!=-1){               
+                        cl=cl+lon;
+                    }else{
+                        System.out.println("Error, no es posible calcular la longitud");
                     }
-                    cl=cl+lon;
                 }
             }
             for (int i = 0; i < etis.size(); i++) {
