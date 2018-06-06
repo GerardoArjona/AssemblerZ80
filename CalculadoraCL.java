@@ -18,8 +18,9 @@ public class CalculadoraCL{
 			String instruc;
 			BufferedReader archLong = new BufferedReader(new FileReader("MnLong.txt"));
 			String[] ins=instruccion.split(" ");
-			//System.out.println(ins[i]);
-			//System.out.println(ins[j]);			
+			System.out.println(ins[i]+"<---");
+			//System.out.println(ins[j]);
+			System.out.println(ins.length);
 			if((!ins[j].contains("(")&&!ins[j].contains(")"))&&(ins[j].contains("A")||ins[j].contains("B")||ins[j].contains("C")||ins[j].contains("D")||ins[j].contains("E")||ins[j].contains("H")||ins[j].contains("L"))){
 				ins[j]=ins[j].replace('A','R');
 				ins[j]=ins[j].replace('B','R');
@@ -146,7 +147,26 @@ public class CalculadoraCL{
 			}
 	}catch(IOException exp){
 			exp.printStackTrace();
-		}
+	}catch(ArrayIndexOutOfBoundsException e){
+		try{
+			BufferedReader archLong = new BufferedReader(new FileReader("MnLong.txt"));
+			String line="";
+			String[] ins=instruccion.split(" ");
+			for(int k=0; k<ins.length; k++){
+				if(!ins[k].equals("")){
+					while((line=archLong.readLine())!=null){
+						String[] instruccionArch=line.split("\\|");
+						if(instruccionArch[0].equals(ins[k])){
+							archLong.close();
+							return Integer.parseInt(instruccionArch[1]);
+						}
+					}
+				}
+			}
+		}catch(IOException exp){
+			exp.printStackTrace();
+		}			
+	}
 
 		return 0;
 	}

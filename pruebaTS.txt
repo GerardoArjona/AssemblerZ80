@@ -2,6 +2,7 @@ pruebaTS
 SIMBOLO|VALOR|DEFINICION
 X|0|s
 Y|1|s
-ETI1|3|s
-ETI2|7|s
-ETI3|9|s
+ETI1|5|s
+ETI2|9|s
+ETI3|b|s
+ETI4|f|s
