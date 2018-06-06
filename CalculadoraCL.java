@@ -113,6 +113,23 @@ public class CalculadoraCL{
 						ins[j]="";
 						ins[j]=s[0]+","+s[1];
 					}
+				}else if(ins[j].contains("A")){
+					if((ins[j].contains("B")||ins[j].contains("C")||ins[j].contains("D")||ins[j].contains("E")||ins[j].contains("H")||ins[j].contains("L"))){
+						//System.out.println("Contiene A,B,C,...");
+						if(ins[j].contains("HL")){
+							System.out.println("Contiene HL");
+							ins[j]=ins[j].replace('A','R');
+							ins[j]=ins[j].replace('B','R');
+							ins[j]=ins[j].replace('C','R');
+							ins[j]=ins[j].replace('D','R');
+							ins[j]=ins[j].replace('E','R');
+							ins[j]=ins[j].replace('H','R');
+							ins[j]=ins[j].replace('L','R');
+						}else if(!ins[j].contains("BC")&&!ins[j].contains("DE")){
+							System.out.println("No contiene DE o BC");
+							return -1;			
+						}
+					}
 				}
 			}
 			instruc=ins[i]+" "+ins[j];
