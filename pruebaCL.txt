@@ -10,5 +10,7 @@ ISNTRUCCION|CL
     LD (HL),E|a
  LD (IY+9),D|b
     LD B,A|e
- NOP|f
-    HALT|10
+    PUSH IX|f
+    RET|11
+ NOP|12
+    HALT|13

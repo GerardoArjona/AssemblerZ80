@@ -8,6 +8,8 @@ ETI2: LD C,(HL)
     LD (HL),E
 ETI3: LD (IY+9),D
     LD B,A
+    PUSH IX
+    RET
 ETI4: NOP
     HALT
     END
