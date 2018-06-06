@@ -33,7 +33,8 @@ public class PrimeraPasada{
                     while((l=ts.readLine())!=null) {
                         String[] lSplit=l.split("\\|");
                         hexCL = Integer.toHexString(cl);
-                        //System.out.println(hexCL);
+                        System.out.println(etiDef[1]);
+                        System.out.println(hexCL);
                         Writer output = new BufferedWriter(new FileWriter(fileNameSplit[0]+"TS.txt", true));
                         Writer outCl = new BufferedWriter(new FileWriter(fileNameSplit[0]+"CL.txt",true));  
                         output.append(eti+"|"+hexCL+"|s\r\n");
@@ -51,6 +52,7 @@ public class PrimeraPasada{
                 }else{
                     System.out.println(line);
                     hexCL = Integer.toHexString(cl);
+                    System.out.println(hexCL);
                     Writer outCl = new BufferedWriter(new FileWriter(fileNameSplit[0]+"CL.txt",true));
                     outCl.append(line+"|"+hexCL+"\r\n");
                     outCl.close();

@@ -1,8 +1,11 @@
 LD R,R'|1
 LD R,N |2
 LD R,(HL)|1
+LD (HL),R|1
 LD R,(IX+D)|3
 LD R,(IY+D)|3
+LD (IX+D),R|3
+LD (IY+D),R|3
 LD (HL),N|2
 LD (IX+D),N|4
 LD (IY+D),N|4
