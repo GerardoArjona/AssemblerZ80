@@ -11,7 +11,7 @@ public class CreadorTablas{
 			PrintWriter pw = new PrintWriter(new OutputStreamWriter ( new FileOutputStream(fileNameSplit[0]+tabla+".txt")));
 			pw.println(fileNameSplit[0]+tabla);
 			//pw.println("");
-			pw.println(encabezado);
+			//pw.println(encabezado);
 			pw.close();
 		}catch(IOException exp){
 			System.out.println("Error: No se pudo abrir o crear el archivo");

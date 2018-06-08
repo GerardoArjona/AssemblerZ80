@@ -16,6 +16,8 @@ public class PrimeraPasada{
 
     public void pasadaUno(String fileName){
         
+        
+        
         try {
             CalculadoraCL longitudCl = new CalculadoraCL();
             String[] fileNameSplit=fileName.split("\\.");
@@ -84,5 +86,7 @@ public class PrimeraPasada{
 			exp.printStackTrace();
 		}
     }
-
+    
+         
+    
 }

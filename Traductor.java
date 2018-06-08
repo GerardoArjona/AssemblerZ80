@@ -18,8 +18,13 @@ public class Traductor{
             creadorTablas.creandoTablas(fileName, "CL","ISNTRUCCION|CL" );
             creadorTablas.creandoTablas(fileName, "COD","INSTRUCCION|CODIGO" );
 
+            System.out.println("hola:"+ fileName);
             PrimeraPasada p1 = new PrimeraPasada();        
             p1.pasadaUno(fileName);
+
+            SegundaPasada p2 = new SegundaPasada();
+             p2.Second(filesplit[0],fileName);
+
         }
         else
             System.out.println("\nEl archivo no existe o la extension no es valida");
