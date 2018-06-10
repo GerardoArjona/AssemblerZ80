@@ -1,0 +1,15 @@
+pruebaCL
+ LD A,D|0
+ LD E,B|1
+    LD A,C|2
+    CPD|3
+ LD B,(IX+8)|5
+    LD A,(BC)|8
+ LD C,(HL)|a
+    LD (HL),E|c
+ LD (IY+9),D|e
+    LD B,A|11
+    PUSH IX|12
+    RET|14
+ NOP|15
+    HALT|16
