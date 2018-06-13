@@ -1,5 +1,5 @@
 LD R,R'|1
-LD R,R|2
+LD R,N|2
 LD R,(HL)|2
 LD R,(IX+D)|3
 LD R,(IY+D)|3
@@ -55,6 +55,10 @@ LDIR|2
 LDD|2
 LDDR|2
 CPI|2
+CP (IY+D)|3
+CP R|1
+CP N|2
+CP (HL)|1
 CPIR|2
 CPD|2
 CPDR|2
@@ -130,7 +134,7 @@ JR Z,E|2
 JR E,Z|2
 JR NZ,E|2
 JR E,NZ|2
-JP(HL)|1
+JP (HL)|1
 JP (IX)|2
 JP (IY)|2
 DIN Z,E|2

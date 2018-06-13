@@ -1,7 +1,7 @@
 pruebaTS
-X|0|s
-Y|1|s
-ETI1|5|s
-ETI2|a|s
-ETI3|e|s
-ETI4|15|s
+X|0000
+Y|0001
+ETI1|0006
+ETI2|0012
+ETI3|0016
+ETI4|001a
