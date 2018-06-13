@@ -18,12 +18,15 @@ public class Traductor{
             creadorTablas.creandoTablas(fileName, "CL");
             creadorTablas.creandoTablas(fileName, "COD");
 
-            System.out.println("hola:"+ fileName);
+            //System.out.println("hola:"+ fileName);
             PrimeraPasada p1 = new PrimeraPasada();        
             p1.pasadaUno(fileName);
 
             SegundaPasada p2 = new SegundaPasada();
              p2.Second(filesplit[0],fileName);
+
+            GeneradorArchivos ga = new GeneradorArchivos();
+            ga.generar(fileName);
 
         }
         else

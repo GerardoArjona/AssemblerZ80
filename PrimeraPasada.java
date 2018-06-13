@@ -49,7 +49,7 @@ public class PrimeraPasada{
                         }else if (hexCL.length()==3){
                             hexCL="0"+hexCL;
                         }  
-                        output.append(eti+"|"+hexCL+"|S\r\n");
+                        output.append(eti+"|"+hexCL+"\r\n");
                         output.close();
                         outCl.append(etiDef[1].replace("    ", "")+"|"+hexCL.toUpperCase()+"\r\n");
                         outCl.close();
