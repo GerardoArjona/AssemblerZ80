@@ -23,25 +23,35 @@ public class PrimeraPasada{
             String[] fileNameSplit=fileName.split("\\.");
             BufferedReader br = new BufferedReader(new FileReader(fileName));
             BufferedReader ts = new BufferedReader(new FileReader(fileNameSplit[0]+"TS.txt"));
+            Writer cleanCL = new BufferedWriter(new FileWriter(fileNameSplit[0]+"CL.txt"));
             ArrayList<String> etis = new ArrayList<String>(); //todas las etiquetas que se encuentren en el archivo se guardan aquí
             String line;
             String l;
             String mn;
+            cleanCL.append("");
+            cleanCL.close();
             while(!((line = br.readLine()).equals("    END"))) {
                 if(line.indexOf(":")!=-1){
                     String[] etiDef=line.split(":");
                     String eti=etiDef[0].replace(" ", "");
                     etis.add(etiDef[0]);
                     while((l=ts.readLine())!=null) {
-                        String[] lSplit=l.split("\\|");
+                        String[] lSplit =l.split("\\|");
                         hexCL = Integer.toHexString(cl);
                         //System.out.println(etiDef[1]);
                         //System.out.println(hexCL);
                         Writer output = new BufferedWriter(new FileWriter(fileNameSplit[0]+"TS.txt", true));
-                        Writer outCl = new BufferedWriter(new FileWriter(fileNameSplit[0]+"CL.txt",true));  
-                        output.append(eti+"|"+hexCL+"|s\r\n");
+                        Writer outCl = new BufferedWriter(new FileWriter(fileNameSplit[0]+"CL.txt",true));
+                        if (hexCL.length()==1){
+                            hexCL="000"+hexCL;
+                        }else if(hexCL.length()==2){
+                            hexCL="00"+hexCL;
+                        }else if (hexCL.length()==3){
+                            hexCL="0"+hexCL;
+                        }  
+                        output.append(eti+"|"+hexCL+"|S\r\n");
                         output.close();
-                        outCl.append(etiDef[1]+"|"+hexCL+"\r\n");
+                        outCl.append(etiDef[1].replace("    ", "")+"|"+hexCL.toUpperCase()+"\r\n");
                         outCl.close();
                         lon=longitudCl.calcularLongitud(etiDef[1], 1, 2);
                         if(lon!=-1){               
@@ -56,7 +66,14 @@ public class PrimeraPasada{
                     hexCL = Integer.toHexString(cl);
                     //System.out.println(hexCL);
                     Writer outCl = new BufferedWriter(new FileWriter(fileNameSplit[0]+"CL.txt",true));
-                    outCl.append(line+"|"+hexCL+"\r\n");
+                    if (hexCL.length()==1){
+                        hexCL="000"+hexCL;
+                    }else if(hexCL.length()==2){
+                        hexCL="00"+hexCL;
+                    }else if (hexCL.length()==3){
+                        hexCL="0"+hexCL;
+                    }
+                    outCl.append(" "+line.replace("    ", "")+"|"+hexCL.toUpperCase()+"\r\n");
                     outCl.close();
                     lon=longitudCl.calcularLongitud(line, 4, 5);
                     if(lon!=-1){               

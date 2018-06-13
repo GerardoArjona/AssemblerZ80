@@ -14,9 +14,9 @@ public class Traductor{
 
         if(f.exists() && filesplit[1].contains("asm")){
             CreadorTablas creadorTablas = new CreadorTablas();        
-            creadorTablas.creandoTablas(fileName, "TS","SIMBOLO|VALOR|DEFINICION" );
-            creadorTablas.creandoTablas(fileName, "CL","ISNTRUCCION|CL" );
-            creadorTablas.creandoTablas(fileName, "COD","INSTRUCCION|CODIGO" );
+            creadorTablas.creandoTablas(fileName, "TS");
+            creadorTablas.creandoTablas(fileName, "CL");
+            creadorTablas.creandoTablas(fileName, "COD");
 
             System.out.println("hola:"+ fileName);
             PrimeraPasada p1 = new PrimeraPasada();        

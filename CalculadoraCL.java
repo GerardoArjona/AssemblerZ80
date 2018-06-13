@@ -21,7 +21,39 @@ public class CalculadoraCL{
 			System.out.println(ins[i]+"<---");
 			//System.out.println(ins[j]);
 			System.out.println(ins.length);
-			if((!ins[j].contains("(")&&!ins[j].contains(")"))&&(ins[j].contains("A")||ins[j].contains("B")||ins[j].contains("C")||ins[j].contains("D")||ins[j].contains("E")||ins[j].contains("H")||ins[j].contains("L"))){
+			if(ins[i].contains("JR")){
+				//System.out.println("contiene JR");
+				String[] s=ins[j].split("\\,");
+				//System.out.println(s[0]);
+				if(s.length>1){
+					s[1]=",E";
+					ins[j]="";
+					ins[j]=s[0]+s[1];
+				}else{
+					ins[j]="E";
+				}
+				//System.out.println(s[0]);
+				//System.out.println(ins[j]);
+			}
+			else if(ins[i].contains("JP")){
+				System.out.println("contiene JP");
+				System.out.println(ins[j]);
+				String[] s=ins[j].split("\\,");
+				System.out.println(s[0]);
+				if(s.length>1){
+					s[1]=",NN";
+					s[0]="CC";
+					ins[j]="";
+					ins[j]=s[0]+s[1];
+				}else{
+					if(!s[0].contains("(")){
+						ins[j]="NN";
+					}
+				}
+				System.out.println(s[0]);
+				System.out.println(ins[j]);
+			}
+			else if((!ins[j].contains("(")&&!ins[j].contains(")"))&&(ins[j].contains("A")||ins[j].contains("B")||ins[j].contains("C")||ins[j].contains("D")||ins[j].contains("E")||ins[j].contains("H")||ins[j].contains("L"))){
 				ins[j]=ins[j].replace('A','R');
 				ins[j]=ins[j].replace('B','R');
 				ins[j]=ins[j].replace('C','R');
@@ -137,7 +169,7 @@ public class CalculadoraCL{
 			//System.out.println(instruc+">___");
 			if(instruc.equals("LD R,R"))
 				instruc=instruc+"'";
-			System.out.println(instruc);
+			System.out.println(instruc+"**************************");
 			while((line=archLong.readLine())!=null){
                 	String[] instruccionArch=line.split("\\|");
                 	if(instruccionArch[0].equals(instruc)){

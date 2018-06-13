@@ -1,15 +1,18 @@
-pruebaCL
- LD A,D|0
- LD E,B|1
-    LD A,C|2
-    CPD|3
- LD B,(IX+8)|5
-    LD A,(BC)|8
- LD C,(HL)|a
-    LD (HL),E|c
- LD (IY+9),D|e
-    LD B,A|11
-    PUSH IX|12
-    RET|14
- NOP|15
-    HALT|16
+ LD A,D|0000
+ LD E,B|0001
+ LD A,C|0002
+ LD E,A|0003
+ CPD|0004
+ LD B,(IX+8)|0006
+ LD A,(BC)|0009
+ JP (HL)|000B
+ JP 1202|000C
+ EXX|000F
+ LD C,(HL)|0010
+ LD (HL),E|0012
+ LD (IY+9),D|0014
+ LD B,A|0017
+ PUSH IX|0018
+ RET|001A
+ NOP|001B
+ HALT|001C

@@ -130,7 +130,7 @@ JR Z,E|2
 JR E,Z|2
 JR NZ,E|2
 JR E,NZ|2
-JP(HL)|1
+JP (HL)|1
 JP (IX)|2
 JP (IY)|2
 DIN Z,E|2
